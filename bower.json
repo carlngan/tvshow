@@ -1,0 +1,31 @@
+{
+    "name": "tvshow",
+    "description": "TVSHOW",
+    "version": "0.0.1",
+    "homepage": "http://tvshow.carlngan.com",
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+        "angular": "~1.5.0",
+        "angular-animate" : "~1.5.0",
+        "angular-bootstrap" : "~0.14.1",
+        "angular-local-storage": "~0.2.3",
+        "angular-mocks": "~1.5.0",
+        "angular-numeraljs": "^1.1.6",
+        "angular-route": "~1.5.0",
+        "angular-resource": "~1.5.0",
+        "angular-sanitize": "~1.5.0",
+        "angular-ui-router" : "~0.2.15",
+        "bootstrap": "~3.3.5",
+        "bootswatch-dist": "superhero",
+        "fontawesome": "~4.4.0",
+        "jquery": "~2.1.4",
+        "jquery-ui": "~1.11.4",
+        "jquery-migrate": "~1.2.1",
+        "moment-timezone": "~0.4.1",
+        "metisMenu": "~2.2.0",
+        "ng-file-upload" : "~9.0.9",
+        "numeral": "^1.5.3",
+        "ocLazyLoad": "~1.0.6"
+    }
+}

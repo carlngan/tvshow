@@ -1,0 +1,86 @@
+.col-md-12
+    h1.text-center TV Show Simulation
+.container(ng-controller="IndexCtrl")
+    hr
+    .row
+        .col-md-12 Scenario: You are on a TV Show. You are presented with three (or N where N>3) doors. There are a million dollars behind one of the doors; the host knows which.
+            | You can choose one door. Then the host opens one (or D where D < N-1) of the doors that you did not choose which does not have the prize. You are then asked if you want to switch doors or stay with
+            | the one you picked. We are trying to prove that the probability of switching is always (N−1)/[N(N−D−1)] given that N and D that falls within our requirements.
+    hr
+    .row
+        .col-md-12.text-center
+            .col-md-5
+                .form-group
+                    label.control-label(for='doors')
+                        h4 Number of Doors (N):&nbsp;
+                    input#doors(style="margin-left:20px;",ng-model="doors", ng-change="showBody=0")
+            .col-md-5
+                .form-group
+                    label.control-label(for='doorsToOpen')
+                        h4 Doors to Open (D):&nbsp;
+                    input#doorsToOpen(style="margin-left:20px;", ng-model="doorsToOpen", ng-change="showBody=0")
+            .col-md-2
+                .form-group
+                    button.btn.btn-success(ng-click="simulate()") Simulate
+    .row(ng-if="error")
+        .col-md-12.text-center.alert.alert-danger {{error}}
+    hr
+    .row(ng-if="showBody==1")
+        .col-md-12
+            .col-md-12
+                .panel-body
+                    h4 Total Doors
+                        span.pull-right {{doors}}
+                    h4 Doors to Open
+                        span.pull-right {{doorsToOpen}}
+                    h4 Number of Possibilities
+                        span.pull-right {{resultsSwitch.length}}
+                    h4 Probability of winning when switching
+                        span.pull-right {{numSwitchWins | reduce:resultsSwitch.length*(doors-doorsToOpen-1)}}
+                    h4 Probability of winning when staying
+                        span.pull-right {{numStayWins | reduce:resultsStay.length}}
+        .col-md-12
+            .col-md-6.panel.panel-default
+                .panel-heading
+                    h4 Possibilities when switching
+                .panel-body
+                    table.table.table-striped.table-hover
+                        tbody
+                            tr
+                                th Prize
+                                th Pick
+                                th Open
+                                th Switch
+                                th Result
+                            tr(ng-repeat="res in resultsSwitch")
+                                td {{res.prize}}
+                                td {{res.pick}}
+                                td {{res.open | open}}
+                                td
+                                    span {{res.switchTo | switchTo: res.pick}}
+                                td
+                                    span.btn-success.btn-md(ng-if="res.result==1") WIN!
+                                    span(ng-if="res.result!=1") Lose
+            .col-md-6.panel.panel-default
+                .panel-heading
+                    h4 Possibilities when staying
+                .panel-body
+                    table.table.table-striped.table-hover
+                        tbody
+                            tr
+                                th Prize
+                                th Pick
+                                th Open
+                                th Switch
+                                th Result
+                            tr(ng-repeat="res in resultsStay")
+                                td {{res.prize}}
+                                td {{res.pick}}
+                                td {{res.open | open}}
+                                td
+                                    span Stay at {{res.pick}}
+                                td
+                                    span.btn-success.btn-md(ng-if="res.result==1") WIN!
+                                    span(ng-if="res.result!=1") Lose
+
+//index should go here
