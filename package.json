@@ -5,7 +5,8 @@
     "homepage": "http://tvshow.carlngan.com",
     "private": true,
     "scripts": {
-        "start": "node ./bin/www"
+        "start": "node ./bin/www",
+        "postinstall": "bower install"
     },
     "dependencies": {
         "async": "~1.4.2",
