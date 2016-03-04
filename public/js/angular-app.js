@@ -84,7 +84,6 @@ angular.module('tvshowApp', ["oc.lazyLoad", 'ui.router', 'ngAnimate', 'LocalStor
                     else{
                         //console.log($scope.open, $scope.doorsToOpen);
                         $scope.openArr = getCombinations($scope.open, $scope.doorsToOpen);
-                        console.log($scope.openArr);
                     }
                     $scope.switchTo = [];
                     for(var switchTo=1; switchTo<= $scope.doors;switchTo++){
